@@ -1,8 +1,9 @@
 def solveSudoku(grid, i, j):
     i, j = findNextCell(grid, i, j)
+    print(i, j)
     possibleX = []
     possibleY = []
-    counter = 0;
+    counter = 0
     if i == -1:
         return True
     for e in range(1, 10):
@@ -11,11 +12,9 @@ def solveSudoku(grid, i, j):
             possibleY.append(j)
     if len(possibleX) == 1:
         grid[possibleX[0]][possibleY[0]] = e
-    if solveSudoku(grid, i, j):
-        return True
     if i < 9:
         solveSudoku(grid, i + 1, j + 1)
-    if counter < 100:
+    else:
         counter += 1
         solveSudoku(grid, 0, 0)
     return False
